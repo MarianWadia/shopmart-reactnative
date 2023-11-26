@@ -1,28 +1,34 @@
-import { KeyboardAvoidingView, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { KeyboardAvoidingView, SafeAreaView, loginStylesheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import { styles } from './LoginScreen'
+import { loginStyles } from './LoginScreen'
 import { useNavigation } from '@react-navigation/native';
 
 const RegisterScreen = () => {
     const [email, setEmail] = useState('');
     const navigation = useNavigation()
+    const [phoneNumber, setPhoneNumber] = useState('');
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={loginStyles.container}>
         <KeyboardAvoidingView>
-            <View style={styles.header}>
-                <Text style= {styles.wlcomeTxt}>Sign up!</Text>
+            <View style={loginStyles.header}>
+                <Text style= {loginStyles.wlcomeTxt}>Sign up!</Text>
                 <Text style= {{fontSize: 18, color : 'gray'}}>Create an account</Text>
             </View>
-            <View style={styles.body}>
+            <View style={loginStyles.body}>
                 <View>
                     <Text style={{fontSize: 18, color: "black"}}>Email</Text>
-                    <TextInput style={styles.input} placeholder='please enter your email' 
+                    <TextInput style={loginStyles.input} placeholder='please enter your email' 
                         value={email} onChange={(e)=>setEmail(e.target.value)} />
+                </View>
+                <View>
+                    <Text style={{fontSize: 18, color: "black"}}>Phone Number</Text>
+                    <TextInput style={loginStyles.input} placeholder='please enter your phone number' 
+                        value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)} />
                 </View>
             </View>
             <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center', gap: 15}}>
-                <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('Account')}>
+                <TouchableOpacity style={loginStyles.buttonContainer} onPress={()=>navigation.navigate('AfterRegister')}>
                     <Text style={{color: "white", fontSize: 15}}>Continue</Text>
                 </TouchableOpacity>
 

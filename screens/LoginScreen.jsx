@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, KeyboardAvoidingView, TextInput, TouchableOpacity, Button, Pressable, Image } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, KeyboardAvoidingView, TextInput, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
@@ -11,22 +11,22 @@ const LoginScreen = () => {
     const navigation = useNavigation()
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={loginStyles.container}>
         <KeyboardAvoidingView>
-            <View style={styles.header}>
-                <Text style= {styles.wlcomeTxt}>Welcome back!</Text>
+            <View style={loginStyles.header}>
+                <Text style= {loginStyles.wlcomeTxt}>Welcome back!</Text>
                 <Text style= {{fontSize: 18, color : 'gray'}}>Login to your account</Text>
             </View>
 
-            <View style={styles.body}>
+            <View style={loginStyles.body}>
                 <View>
                     <Text style={{fontSize: 18, color: "black"}}>Email or Mobile number</Text>
-                    <TextInput style={styles.input} placeholder='please enter your email' 
+                    <TextInput style={loginStyles.input} placeholder='please enter your email' 
                         value={email} onChange={(e)=>setEmail(e.target.value)} />
                 </View>
                 <View style={{flexDirection: 'column', width: 350}}>
                     <Text style={{fontSize: 18, color: "black"}}>Password</Text>
-                    <View style={styles.input}>
+                    <View style={loginStyles.input}>
                         <TextInput placeholder='please enter your password' 
                             secureTextEntry={hidePassword} value={password} onChange={(e)=>setPassword(e.target.value)} />
                         <TouchableOpacity onPress={()=>setHidePassword(!hidePassword)}>
@@ -40,7 +40,7 @@ const LoginScreen = () => {
             </View>
             
             <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center', gap: 15}}>
-                <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('Categories')}>
+                <TouchableOpacity style={loginStyles.buttonContainer} onPress={()=>navigation.navigate('AfterLogin')}>
                     <Text style={{color: "white", fontSize: 15}}>Login</Text>
                 </TouchableOpacity>
                 
@@ -52,12 +52,12 @@ const LoginScreen = () => {
                     <Text style={{color: "black", fontSize: 15, textDecorationLine: 'underline'}}>OR Login With</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.buttonContainer, styles.loginWithButton]}>
+                <TouchableOpacity style={[loginStyles.buttonContainer, loginStyles.loginWithButton]}>
                     <AntDesign name="facebook-square" size={24} color="#4169e1" />
                     <Text style={{color: "#778899", fontSize: 15}}>Continue with Facebook</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.buttonContainer, styles.loginWithButton]}>
+                <TouchableOpacity style={[loginStyles.buttonContainer, loginStyles.loginWithButton]}>
                     <Image 
                         source={{uri: 'https://th.bing.com/th/id/R.68fc8758cbb72878f025459d1ab12465?rik=p%2fzYsNa11f%2bKvQ&pid=ImgRaw&r=0'}}
                         style={{ width: 24, height: 24}}
@@ -79,11 +79,12 @@ const LoginScreen = () => {
 
 export default LoginScreen
 
-export const styles = StyleSheet.create({
+export const loginStyles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "white",
-        padding: 20,
+        padding: 40,
+        alignItems: 'center'
     },
     header: {
         marginTop: 50,
