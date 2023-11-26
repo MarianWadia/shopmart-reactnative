@@ -22,7 +22,7 @@ const RegisterScreen = () => {
                 </View>
             </View>
             <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center', gap: 15}}>
-                <TouchableOpacity style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('Account')}>
                     <Text style={{color: "white", fontSize: 15}}>Continue</Text>
                 </TouchableOpacity>
 
