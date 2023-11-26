@@ -40,7 +40,7 @@ const LoginScreen = () => {
             </View>
             
             <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center', gap: 15}}>
-                <TouchableOpacity style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('Categories')}>
                     <Text style={{color: "white", fontSize: 15}}>Login</Text>
                 </TouchableOpacity>
                 
