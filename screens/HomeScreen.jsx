@@ -45,10 +45,10 @@ const HomeScreen = () => {
   ]
 
     const renderCategoryItem = ({ item }) => (
-      <View style={styles.categoryItem}>
+      <TouchableOpacity style={styles.categoryItem}>
         <Image source={{uri: item.imgUrl}} style={styles.categoryImage} />
         <Text style={styles.categoryLabel}>{item.label}</Text>
-      </View>
+      </TouchableOpacity>
     );
 
     const handleAddToCart = (itemId) => {
@@ -75,7 +75,7 @@ const HomeScreen = () => {
   
 
   return (
-    <SafeAreaView style={{backgroundColor: '#add8e6', flex: 1}}>
+    <SafeAreaView style={{backgroundColor: '#add8e6', flexGrow: 1}}>
       <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <TouchableOpacity style={{flexDirection: 'row', gap: 10, backgroundColor: '#7eb2c4', padding: 20, marginTop: 5, alignItems: 'center'}}>
@@ -84,7 +84,7 @@ const HomeScreen = () => {
         <AntDesign name="down" size={18} color="black" />
       </TouchableOpacity>
 
-      <View style={{flexGrow: 1, backgroundColor: 'white'}}>
+      
       {/* Categories Circles list */}
       <FlatList
       data={categories}
@@ -96,15 +96,13 @@ const HomeScreen = () => {
     />
 
       {/* Banner */}
-      <View>
         <Image 
           source={{uri: 'https://th.bing.com/th/id/OIP.CPOThO3-HietYkmTBwkNhwHaDt?rs=1&pid=ImgDetMain'}}
-          style={{width: '100%', height: 200, marginTop: 20}}
+          style={{width: '100%', height: 200, marginTop: -280}}
         />
-      </View>
 
       {/* Shopping Items */}
-      <View style={{flexDirection: 'row', alignItems: 'center', paddingHorizontal: 15, paddingTop: 10, justifyContent: 'space-between'}}>
+      <View style={{flexDirection: 'row', alignItems: 'center', paddingHorizontal: 15, paddingTop: 10, justifyContent: 'space-between', backgroundColor: 'white'}}>
         <Text style={{ fontSize: 25, fontWeight: 'bold'}}>Start Shopping For</Text>
         <TouchableOpacity>
           <Text style={{color:'#14c6cc', fontSize: 15}}>See All</Text>
@@ -112,6 +110,7 @@ const HomeScreen = () => {
         
       </View>
       
+      <View style={{flexGrow: 1, backgroundColor: 'white', flex: 1}}>
         <FlatList
         data={items}
         renderItem={renderShoppingItem}
@@ -129,8 +128,10 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
   categoryList: {
-    alignItems: 'center',
+    // alignItems: 'center',
+    justifyContent:'center',
     paddingVertical: 10,
+    height: 100,
     backgroundColor: 'white'
   },
   categoryItem: {
@@ -146,21 +147,14 @@ const styles = StyleSheet.create({
   categoryLabel: {
     fontSize: 12,
   },
-  scrollContainer: {
-    flexGrow: 1,
-  },
   listContainer: {
     padding: 10,
     backgroundColor: 'white',
-    flexGrow: 1
   },
   itemContainer: {
     flex: 1,
     alignItems: 'center',
     margin: 10,
-    // borderWidth: 1,
-    // borderColor: '#ddd',
-    // borderRadius: 5,
     padding: 10,
   },
   itemImage: {

@@ -22,8 +22,9 @@ const CategoriesScreen = () => {
 
   return (
     
-    <SafeAreaView style={{backgroundColor: '#add8e6'}}>
+    <SafeAreaView style={{backgroundColor: '#add8e6', flex: 1}}>
         <SearchBar setSearchValue={setSearchValue} searchValue={searchValue}/>
+
         <FlatList 
             data={categories}
             renderItem={renderItem}
@@ -40,7 +41,6 @@ export default CategoriesScreen
 const styles = StyleSheet.create({
     container:{
         backgroundColor: 'white', 
-        height: '100%',
         marginTop: 20,
         padding: 10
     },

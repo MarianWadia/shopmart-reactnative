@@ -10,9 +10,9 @@ import { useNavigation } from '@react-navigation/native'
 const NotAuthenticatedScreen = () => {
     const navigation = useNavigation()
   return (
-    <SafeAreaView style={{backgroundColor: '#add8e6'}}>
+    <SafeAreaView style={{backgroundColor: 'lightgray'}}>
         <View>
-           <HeaderWithArrow title='CKWheckout' />
+           <HeaderWithArrow title='Checkout' />
 
             <View style={{backgroundColor: 'lightgray', height: "100%"}}>
                 <View style={{paddingVertical: 80, paddingHorizontal: 10, alignItems: 'center', justifyContent: 'center'}}>

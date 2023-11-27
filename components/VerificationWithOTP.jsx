@@ -32,7 +32,7 @@ const VerificationWithOTP = () => {
         </TouchableOpacity>
     </View>
 
-      <TouchableOpacity style={[loginStyles.buttonContainer, AfterLoginStyles.buttonStyles]} onPress={()=>navigation.navigate('Home')}>
+      <TouchableOpacity style={[loginStyles.buttonContainer, AfterLoginStyles.buttonStyles]} onPress={()=>navigation.navigate('Main')}>
         <Text style={{color: "white", fontSize: 15}}>Continue</Text>
       </TouchableOpacity>
 
