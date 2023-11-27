@@ -44,7 +44,7 @@ const LoginScreen = () => {
                     <Text style={{color: "white", fontSize: 15}}>Login</Text>
                 </TouchableOpacity>
                 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('NotAuthenticated')}>
                     <Text style={{color: "#02a4da", fontSize: 15}}>Continue as a Guest</Text>
                 </TouchableOpacity>
 

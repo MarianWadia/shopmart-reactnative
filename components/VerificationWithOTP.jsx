@@ -3,8 +3,12 @@ import React from 'react'
 import { AfterLoginStyles } from '../screens/AfterLoginVerifyScreen'
 import VerificationInputs from './VerificationInputs'
 import { loginStyles } from '../screens/LoginScreen'
+import {useNavigation} from "@react-navigation/native"
+
 
 const VerificationWithOTP = () => {
+  const navigation = useNavigation()
+
   return (
     <View style={{alignItems:'center'}}>
        <View>
@@ -28,7 +32,7 @@ const VerificationWithOTP = () => {
         </TouchableOpacity>
     </View>
 
-      <TouchableOpacity style={[loginStyles.buttonContainer, AfterLoginStyles.buttonStyles]} onPress={()=>navigation.navigate('AfterLogin')}>
+      <TouchableOpacity style={[loginStyles.buttonContainer, AfterLoginStyles.buttonStyles]} onPress={()=>navigation.navigate('Home')}>
         <Text style={{color: "white", fontSize: 15}}>Continue</Text>
       </TouchableOpacity>
 

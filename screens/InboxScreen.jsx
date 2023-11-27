@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from "@react-navigation/native"
 import { FontAwesome } from '@expo/vector-icons'; 
+import HeaderWithArrow from '../components/HeaderWithArrow';
 
 
 
@@ -12,12 +13,7 @@ const InboxScreen = () => {
   return (
     <SafeAreaView style={{backgroundColor: '#add8e6'}}>
         <View>
-            <View style={styles.headerContainer}>
-                <TouchableOpacity onPress={()=>{navigation.goBack()}}>
-                    <AntDesign name="arrowleft" size={15} color="white"/>
-                </TouchableOpacity>
-                <Text style={{color: 'white', fontSize: 17}}>Inbox</Text>
-            </View>
+           <HeaderWithArrow title='Inbox'/>
             
             <View style={{backgroundColor: 'lightgray', height: "100%"}}>
                 <View style={{paddingVertical: 80, paddingHorizontal: 10, alignItems: 'center', justifyContent: 'center'}}>

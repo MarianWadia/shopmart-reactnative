@@ -2,36 +2,11 @@ import { FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } 
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import SearchBar from '../components/SearchBar'
+import { categories } from '../data/catrgories'
 
 const CategoriesScreen = () => {
     const [searchValue, setSearchValue] = useState('')
 
-    const categories = [
-        {
-            label: 'Electronics',
-            imgUrl: 'https://jooinn.com/images/electronic-device-1.jpg', 
-        },
-        {
-            label: 'Fashion & Beauty',
-            imgUrl: 'https://jooinn.com/images/electronic-device-1.jpg', 
-        },
-        {
-            label: 'Groceries & Drink',
-            imgUrl: 'https://jooinn.com/images/electronic-device-1.jpg', 
-        },
-        {
-            label: 'Personal Care',
-            imgUrl: 'https://jooinn.com/images/electronic-device-1.jpg', 
-        },
-        {
-            label: 'Pets',
-            imgUrl: 'https://jooinn.com/images/electronic-device-1.jpg', 
-        },
-        {
-            label: 'Sports & Gym',
-            imgUrl: 'https://jooinn.com/images/electronic-device-1.jpg', 
-        },
-    ]
 
     const renderItem = ({ item }) => (
         <TouchableOpacity style={styles.item}>
@@ -44,6 +19,7 @@ const CategoriesScreen = () => {
             </View>
         </TouchableOpacity>
       );
+
   return (
     
     <SafeAreaView style={{backgroundColor: '#add8e6'}}>
