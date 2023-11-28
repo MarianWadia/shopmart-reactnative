@@ -4,12 +4,14 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import  HeaderWithArrow  from '../components/HeaderWithArrow'
 import BlueButton from '../components/BlueButton'
 import { useCart } from '../context/CartContext'
+import RemoveItemModal from '../components/RemoveItemModal'
 
 const CartScreen = () => {
   const { removeFromCart, cartItems } = useCart()
   const [totalQuantities, setTotalQuantities] = useState(cartItems?.length)
   const [itemQuantity, setItemQuantity] = useState(1)
   const [subtotal, setSubTotal] = useState(0)
+  const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
 
   useEffect(() => {
     const newSubTotal = cartItems.reduce((acc, item) => acc + (item?.price - (item?.price * (item?.discount / 100)))* itemQuantity, 0) * itemQuantity;
@@ -33,6 +35,7 @@ const CartScreen = () => {
     const onRemoveItem = () => {
       removeFromCart(item)
       setItemQuantity(1)
+      setRemoveModalVisible(false);
     }
     return(
       <View style={{ borderColor: 'gray', borderWidth: 1, borderRadius: 12, padding: 12}}>
@@ -48,7 +51,7 @@ const CartScreen = () => {
           </View>
         </View>
         <View style={{flexDirection: 'row', justifyContent:'space-between', alignItems: 'canter'}}> 
-          <TouchableOpacity onPress={onRemoveItem} style={{backgroundColor: '#cedce2', padding: 6, borderRadius: 3}}>
+          <TouchableOpacity onPress={() => setRemoveModalVisible(true)} style={{backgroundColor: '#cedce2', padding: 6, borderRadius: 3}}>
             <Text style={{color: '#10a6d8', fontWeight: 'bold', fontSize: 15}}>Remove</Text>
           </TouchableOpacity>
           <View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
@@ -61,6 +64,11 @@ const CartScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
+        <RemoveItemModal
+            isVisible={isRemoveModalVisible}
+            onRemove={onRemoveItem}
+            onCancel={()=>setRemoveModalVisible(false)}
+          />
       </View>
 
     )
