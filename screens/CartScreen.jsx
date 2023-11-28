@@ -5,20 +5,31 @@ import  HeaderWithArrow  from '../components/HeaderWithArrow'
 import BlueButton from '../components/BlueButton'
 import { useCart } from '../context/CartContext'
 import RemoveItemModal from '../components/RemoveItemModal'
+import { useUser } from '../context/UserContext'
 
 const CartScreen = ({navigation}) => {
+  const { currentUser } = useUser();
   const { removeFromCart, cartItems } = useCart()
   const [totalQuantities, setTotalQuantities] = useState(cartItems?.length)
   const [itemQuantity, setItemQuantity] = useState(1)
   const [subtotal, setSubTotal] = useState(0)
   const [isRemoveModalVisible, setRemoveModalVisible] = useState(false);
 
+
   useEffect(() => {
     const newSubTotal = cartItems.reduce((acc, item) => acc + (item?.price - (item?.price * (item?.discount / 100)))* itemQuantity, 0) * itemQuantity;
     setSubTotal(newSubTotal);
     setTotalQuantities(cartItems?.length)
   }, [cartItems, itemQuantity, totalQuantities]);
-  
+
+  const handleCheckout = () =>{
+    if(!currentUser){
+      navigation.navigate('NotAuthenticated')
+    }else{
+      navigation.navigate('Checkout', {subtotal})
+    }
+  }
+   
   const renderItem = ({item}) =>{
     const increaseQuantity = () => {
       setItemQuantity(itemQuantity+1)
@@ -96,7 +107,7 @@ const CartScreen = ({navigation}) => {
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.listContainer}
             />
-            <BlueButton text={`CHECKOUT (EGP ${subtotal})`} specialStyles={{alignSelf: 'center'}} onPress={()=>{navigation.navigate('Checkout', {subtotal})}}/>
+            <BlueButton text={`CHECKOUT (EGP ${subtotal})`} specialStyles={{alignSelf: 'center'}} onPress={handleCheckout}/>
           </View>
         ) : (<Text style={{textAlign: 'center', marginTop: 45, fontSize: 20, color: '#10a6d8'}}>No Items Found In the Cart</Text>)}
       </View>

@@ -9,7 +9,7 @@ const SearchBar = ({setSearchValue, searchValue}) => {
         <View style={[loginStyles.input, searchStyles.inputField]}>
             <FontAwesome name="search" size={18} color="black" />
             <TextInput placeholder='Search on Shopmart' 
-                value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} 
+                value={searchValue} onChangeText={(text)=>setSearchValue(text)} 
             />
         </View>
     </View>

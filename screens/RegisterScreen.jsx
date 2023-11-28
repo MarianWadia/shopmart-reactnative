@@ -3,11 +3,25 @@ import React, { useState } from 'react'
 import { loginStyles } from './LoginScreen'
 import { useNavigation } from '@react-navigation/native';
 import BlueButton from '../components/BlueButton';
+import { useUser } from '../context/UserContext';
+import { initialUsers } from '../data/users';
 
-const RegisterScreen = () => {
-    const [email, setEmail] = useState('');
-    const navigation = useNavigation()
-    const [phoneNumber, setPhoneNumber] = useState('');
+const RegisterScreen = ({navigation}) => {
+    const { users } = useUser()
+    const [email, setEmail] = React.useState('');
+    const [phoneNumber, setPhoneNumber] = React.useState('');
+
+    const handleSignup = () => {
+        if(email || phoneNumber){
+            navigation.navigate('AfterRegister', {
+                id: users.length + 1, 
+                email,
+                phoneNumber 
+            })
+        }
+        console.log('Please enter email and phone number')
+        console.log(email, phoneNumber)
+    };
 
   return (
     <SafeAreaView style={loginStyles.container}>
@@ -20,17 +34,17 @@ const RegisterScreen = () => {
                 <View>
                     <Text style={{fontSize: 18, color: "black"}}>Email</Text>
                     <TextInput style={loginStyles.input} placeholder='please enter your email' 
-                        value={email} onChange={(e)=>setEmail(e.target.value)} />
+                        value={email} onChangeText={(text)=>setEmail(text)} />
                 </View>
                 <View>
                     <Text style={{fontSize: 18, color: "black"}}>Phone Number</Text>
                     <TextInput style={loginStyles.input} placeholder='please enter your phone number' 
-                        value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)} />
+                        value={phoneNumber} onChangeText={(text)=>setPhoneNumber(text)} />
                 </View>
             </View>
             <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center', gap: 15}}>
 
-                <BlueButton text='Continue' onPress={()=>navigation.navigate('AfterRegister')} />
+                <BlueButton text='Continue' onPress={handleSignup} />
 
                 <View style={{flexDirection: 'row'}}>
                     <Text>Already Have an account? </Text>

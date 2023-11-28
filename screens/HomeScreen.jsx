@@ -9,7 +9,7 @@ import { useCart } from '../context/CartContext';
 
 
 const HomeScreen = () => {
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = React.useState('')
   const {addToCart} = useCart()
 
   const items = [

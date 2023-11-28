@@ -5,7 +5,7 @@ import SearchBar from '../components/SearchBar'
 import { categories } from '../data/catrgories'
 
 const CategoriesScreen = () => {
-    const [searchValue, setSearchValue] = useState('')
+    const [searchValue, setSearchValue] = React.useState('')
 
 
     const renderItem = ({ item }) => (

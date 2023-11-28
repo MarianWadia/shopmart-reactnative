@@ -3,13 +3,24 @@ import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 import BlueButton from '../components/BlueButton';
+import { useUser } from '../context/UserContext';
 
 
 const LoginScreen = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [hidePassword, setHidePassword] = useState(true);
+    const { login, currentUser } = useUser();
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const [hidePassword, setHidePassword] = React.useState(true);
+    
     const navigation = useNavigation()
+
+    const handleLogin = () => {
+        login(email, password);
+        if(currentUser){
+            navigation.navigate('AfterLogin')
+        }
+      };
+
 
   return (
     <SafeAreaView style={loginStyles.container}>
@@ -23,13 +34,13 @@ const LoginScreen = () => {
                 <View>
                     <Text style={{fontSize: 18, color: "black"}}>Email or Mobile number</Text>
                     <TextInput style={loginStyles.input} placeholder='please enter your email' 
-                        value={email} onChange={(e)=>setEmail(e.target.value)} />
+                        value={email} onChangeText={(text)=>setEmail(text)} />
                 </View>
                 <View style={{flexDirection: 'column', width: 350}}>
                     <Text style={{fontSize: 18, color: "black"}}>Password</Text>
                     <View style={loginStyles.input}>
                         <TextInput placeholder='please enter your password' 
-                            secureTextEntry={hidePassword} value={password} onChange={(e)=>setPassword(e.target.value)} />
+                            secureTextEntry={hidePassword} value={password} onChangeText={(text)=>setPassword(text)} />
                         <TouchableOpacity onPress={()=>setHidePassword(!hidePassword)}>
                             <AntDesign name="eyeo" size={24} color="gray" />     
                         </TouchableOpacity>
@@ -42,9 +53,9 @@ const LoginScreen = () => {
             
             <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center', gap: 15}}>
 
-                <BlueButton onPress={()=>navigation.navigate('AfterLogin')} text='Login'/>
+                <BlueButton onPress={handleLogin} text='Login'/>
                 
-                <TouchableOpacity onPress={()=>navigation.navigate('NotAuthenticated')}>
+                <TouchableOpacity onPress={()=>navigation.navigate('Main')}>
                     <Text style={{color: "#02a4da", fontSize: 15}}>Continue as a Guest</Text>
                 </TouchableOpacity>
 

@@ -6,7 +6,7 @@ import {useNavigation} from "@react-navigation/native"
 import BlueButton from './BlueButton'
 
 
-const VerificationWithOTP = () => {
+const VerificationWithOTP = ({phoneNumber}) => {
   const navigation = useNavigation()
 
   return (
@@ -14,7 +14,7 @@ const VerificationWithOTP = () => {
        <View>
         <Text style={{fontSize: 35, fontWeight: 'bold', textAlign: 'center'}}>Verify Your Phone</Text>
         <Text style={AfterLoginStyles.textStyle} >OTP has been sent to your phone to</Text>
-        <Text style={AfterLoginStyles.textStyle}>+201001478951</Text>
+        <Text style={AfterLoginStyles.textStyle}>{phoneNumber}</Text>
         <Text style={AfterLoginStyles.textStyle}>via SMS</Text>
       </View>
       <View style={AfterLoginStyles.inputsContainer}>

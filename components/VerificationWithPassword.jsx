@@ -5,12 +5,21 @@ import { AfterLoginStyles } from '../screens/AfterLoginVerifyScreen'
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 import BlueButton from './BlueButton';
+import { useUser } from '../context/UserContext';
 
-const VerificationWithPassword = () => {
-  const [password, setPassword] = useState('');
-  const [hidePassword, setHidePassword] = useState(true);
+const VerificationWithPassword = ({id, email, phoneNumber}) => {
+  const [password, setPassword] = React.useState('');
+  const [hidePassword, setHidePassword] = React.useState(true);
   const navigation = useNavigation()
 
+  const { signup } = useUser();
+
+  const handleSignup = () => {
+    const newUser = { id, email, password, phoneNumber };
+    console.log(newUser)
+    signup(newUser);
+    navigation.navigate('Main')
+  }
   return (
     <KeyboardAvoidingView style={{flex:1, alignItems: 'center'}}>
         <View style={{marginTop: 50}}>
@@ -20,13 +29,13 @@ const VerificationWithPassword = () => {
 
         <View style={loginStyles.input}>
             <TextInput placeholder='please enter your password' 
-                secureTextEntry={hidePassword} value={password} onChange={(e)=>setPassword(e.target.value)} />
+                secureTextEntry={hidePassword} value={password} onChangeText={(text)=>setPassword(text)} />
             <TouchableOpacity onPress={()=>setHidePassword(!hidePassword)}>
                 <AntDesign name="eyeo" size={24} color="gray" />     
             </TouchableOpacity>
         </View>
 
-        <BlueButton text='Login' specialStyles={AfterLoginStyles.buttonStyles} onPress={()=>navigation.navigate('Main')} />
+        <BlueButton text='Login' specialStyles={AfterLoginStyles.buttonStyles} onPress={handleSignup} />
     </KeyboardAvoidingView>
   )
 }

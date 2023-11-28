@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import HeaderWithArrow from '../components/HeaderWithArrow'
 import { TextInput } from 'react-native'
 import BlueButton from '../components/BlueButton'
+import { useCart } from '../context/CartContext'
 
 
 
@@ -27,6 +28,7 @@ const RadioButton = ({ label, isSelected, onPress, imgUrl }) => {
 
   
 const CheckoutScreen = ({route, navigation}) => {
+  const {deleteCart} = useCart()
     const {subtotal} = route.params
 
     const paymentMethods = [
@@ -39,6 +41,11 @@ const CheckoutScreen = ({route, navigation}) => {
   const handleMethodSelect = (method) => {
     setSelectedMethod(method.label);
   };
+
+  const handleCheckout = () => {
+    deleteCart();
+    navigation.navigate('Success')
+  }
   return (
     <SafeAreaView style={{backgroundColor: '#add8e6', flex:1}}>
       <HeaderWithArrow title='Place your order'/>
@@ -84,7 +91,7 @@ const CheckoutScreen = ({route, navigation}) => {
                     />
                 ))}
             </View>
-            <BlueButton text='Confirm Order' specialStyles={{alignSelf: 'center', marginTop: 50}} onPress={()=>{navigation.navigate('Success')}}/>
+            <BlueButton text='Confirm Order' specialStyles={{alignSelf: 'center', marginTop: 50}} onPress={handleCheckout}/>
         </View>
       </View>
     </SafeAreaView>

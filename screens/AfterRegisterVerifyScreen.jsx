@@ -4,8 +4,10 @@ import LoginWithOtpBar from '../components/LoginWithOtpBar'
 import VerificationWithOTP from '../components/VerificationWithOTP'
 import VerificationWithPassword from '../components/VerificationWithPassword'
 
-const AfterRegisterVerifyScreen = () => {
-    const [isOtpPressed, setIsOtpPressed] = useState(false)
+const AfterRegisterVerifyScreen = ({route}) => {
+    const [isOtpPressed, setIsOtpPressed] = React.useState(false)
+    const {id, email, phoneNumber } = route.params
+    console.log(id, email, phoneNumber)
 
   return (
     <SafeAreaView style={{flex:1, backgroundColor: 'white'}}>
@@ -13,12 +15,12 @@ const AfterRegisterVerifyScreen = () => {
         {isOtpPressed ? 
             (
                 <View style={{marginTop: 40}}>
-                    <VerificationWithOTP />
+                    <VerificationWithOTP phoneNumber={phoneNumber} />
                 </View>
                 
             )
             : 
-            (<VerificationWithPassword/>) 
+            (<VerificationWithPassword id={id} email={email} phoneNumber={phoneNumber}/>) 
         }
         
     </SafeAreaView>
