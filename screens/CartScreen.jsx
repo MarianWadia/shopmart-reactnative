@@ -6,7 +6,7 @@ import BlueButton from '../components/BlueButton'
 import { useCart } from '../context/CartContext'
 import RemoveItemModal from '../components/RemoveItemModal'
 
-const CartScreen = () => {
+const CartScreen = ({navigation}) => {
   const { removeFromCart, cartItems } = useCart()
   const [totalQuantities, setTotalQuantities] = useState(cartItems?.length)
   const [itemQuantity, setItemQuantity] = useState(1)
@@ -96,7 +96,7 @@ const CartScreen = () => {
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.listContainer}
             />
-            <BlueButton text={`CHECKOUT (EGP ${subtotal})`} specialStyles={{alignSelf: 'center'}} onPress={()=>{}}/>
+            <BlueButton text={`CHECKOUT (EGP ${subtotal})`} specialStyles={{alignSelf: 'center'}} onPress={()=>{navigation.navigate('Checkout', {subtotal})}}/>
           </View>
         ) : (<Text style={{textAlign: 'center', marginTop: 45, fontSize: 20, color: '#10a6d8'}}>No Items Found In the Cart</Text>)}
       </View>

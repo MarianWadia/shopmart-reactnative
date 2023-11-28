@@ -18,6 +18,8 @@ import CartScreen from '../screens/CartScreen';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import { SimpleLineIcons } from '@expo/vector-icons'; 
+import CheckoutScreen from '../screens/CheckoutScreen';
+import SuccessScreen from '../screens/SuccessScreen';
 
 
 const StackNavigator = () => {
@@ -89,6 +91,8 @@ const StackNavigator = () => {
         <Stack.Screen name='AfterLogin' component={AfterLoginVerifyScreen} options={{title: ''}} />
         <Stack.Screen name='AfterRegister' component={AfterRegisterVerifyScreen} options={{title: ''}} />
         <Stack.Screen name='NotAuthenticated' component={NotAuthenticatedScreen} options={{headerShown: false}} />
+        <Stack.Screen name='Checkout' component={CheckoutScreen} options={{headerShown: false}} />
+        <Stack.Screen name='Success' component={SuccessScreen} options={{headerShown: false}} />
     </Stack.Navigator>
    </NavigationContainer>
   )

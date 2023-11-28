@@ -1,10 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-const BlueButton = ({onPress, specialStyles, text}) => {
+const BlueButton = ({onPress, specialStyles, text, textColor}) => {
   return (
     <TouchableOpacity style={[styles.buttonContainer, specialStyles && specialStyles ]} onPress={onPress ? onPress : ()=>{}}>
-        <Text style={{color: "white", fontSize: 15}}>{text}</Text>
+        <Text style={{color: textColor ? textColor : "white", fontSize: 15}}>{text}</Text>
     </TouchableOpacity>
   )
 }
