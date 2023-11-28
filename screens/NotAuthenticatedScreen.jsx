@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { Feather } from '@expo/vector-icons'; 
 import { loginStyles } from './LoginScreen';
 import { useNavigation } from '@react-navigation/native' 
+import BlueButton from '../components/BlueButton';
 
 
 const NotAuthenticatedScreen = () => {
@@ -23,9 +24,9 @@ const NotAuthenticatedScreen = () => {
                         <Text style={{fontWeight: 'bold', fontSize: 23, textAlign: 'center'}}>Please login to access this account</Text>
                         <Text style={{color: 'gray', fontSize: 18, marginTop: 5, textAlign: 'center'}}>If you are not registered just sign in with your email or facebook account.</Text>
                     </View>
-                    <TouchableOpacity style={[loginStyles.buttonContainer, {marginTop: 30}]} onPress={()=>navigation.navigate('Login')}>
-                        <Text style={{color: "white", fontSize: 15}}>Continue</Text>
-                    </TouchableOpacity>
+                    
+                    <BlueButton text='Login' specialStyles={{marginTop: 30}} onPress={()=>navigation.navigate('Login')}/>
+                    
                 </View>
             </View>
         </View>

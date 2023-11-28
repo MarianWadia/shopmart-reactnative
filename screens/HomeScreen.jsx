@@ -5,32 +5,35 @@ import SearchBar from '../components/SearchBar'
 import { EvilIcons } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons'; 
 import { categories } from '../data/catrgories';
+import { useCart } from '../context/CartContext';
 
 
 const HomeScreen = () => {
   const [searchValue, setSearchValue] = useState('')
+  const {addToCart} = useCart()
 
   const items = [
     {
       id: '1',
       name: 'White Shirt',
       discount: 70,
+      itemQuantity: 1,
       price: 600,
- 
       imgUrl: 'https://i.pinimg.com/236x/64/c7/00/64c7003c37a03965309eea883d7a06c6.jpg'
     },
     {
       id: '2',
       name: 'Black Adidas Sneakers',
       discount: 50,
+      itemQuantity: 1,
       price: 4500,
-
       imgUrl: 'https://i.pinimg.com/236x/d9/4e/cd/d94ecde3f01a7659566b4fa6214263fa.jpg'
     },
     {
       id: '3',
       name: 'Green Top',
       discount: 25,
+      itemQuantity: 1,
       price: 350,
       imgUrl: 'https://i.pinimg.com/236x/e6/2c/a1/e62ca158b6ac9bff543ca1d963db8ed1.jpg'
     },
@@ -38,8 +41,8 @@ const HomeScreen = () => {
       id: '4',
       name: 'Iphone 13',
       discount: 20,
+      itemQuantity: 1,
       price: 45000,
-
       imgUrl: 'https://i.pinimg.com/236x/5d/c0/cf/5dc0cf0585fc6242d92b643c54f30476.jpg'
     },
   ]
@@ -51,9 +54,10 @@ const HomeScreen = () => {
       </TouchableOpacity>
     );
 
-    const handleAddToCart = (itemId) => {
+    const handleAddToCart = (item) => {
       // Implement your "Add to Cart" logic here
-      console.log(`Added item ${itemId} to cart`);
+      console.log(`Added item ${item} to cart`);
+      addToCart(item)
     };
   
     const renderShoppingItem = ({ item }) => (
@@ -66,7 +70,7 @@ const HomeScreen = () => {
         <Text style={styles.itemLabel}>{item.price}$</Text>
         <TouchableOpacity
           style={styles.addToCartButton}
-          onPress={() => handleAddToCart(item.id)}
+          onPress={() => handleAddToCart(item)}
         >
           <Text style={styles.addToCartButtonText}>Add to Cart</Text>
         </TouchableOpacity>

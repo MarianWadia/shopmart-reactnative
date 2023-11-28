@@ -2,8 +2,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { AfterLoginStyles } from '../screens/AfterLoginVerifyScreen'
 import VerificationInputs from './VerificationInputs'
-import { loginStyles } from '../screens/LoginScreen'
 import {useNavigation} from "@react-navigation/native"
+import BlueButton from './BlueButton'
 
 
 const VerificationWithOTP = () => {
@@ -32,9 +32,7 @@ const VerificationWithOTP = () => {
         </TouchableOpacity>
     </View>
 
-      <TouchableOpacity style={[loginStyles.buttonContainer, AfterLoginStyles.buttonStyles]} onPress={()=>navigation.navigate('Main')}>
-        <Text style={{color: "white", fontSize: 15}}>Continue</Text>
-      </TouchableOpacity>
+      <BlueButton specialStyles={AfterLoginStyles.buttonStyles} text='Continue' onPress={()=>navigation.navigate('Main')}/>
 
     </View>
   )

@@ -11,7 +11,7 @@ import HeaderWithArrow from '../components/HeaderWithArrow';
 const InboxScreen = () => {
     const navigation = useNavigation()
   return (
-    <SafeAreaView style={{backgroundColor: '#add8e6'}}>
+    <SafeAreaView style={{backgroundColor: '#add8e6', flex:1}}>
         <View>
            <HeaderWithArrow title='Inbox'/>
             

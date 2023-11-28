@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, SafeAreaView, KeyboardAvoidingView, TextInput, 
 import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
+import BlueButton from '../components/BlueButton';
 
 
 const LoginScreen = () => {
@@ -40,9 +41,8 @@ const LoginScreen = () => {
             </View>
             
             <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center', gap: 15}}>
-                <TouchableOpacity style={loginStyles.buttonContainer} onPress={()=>navigation.navigate('AfterLogin')}>
-                    <Text style={{color: "white", fontSize: 15}}>Login</Text>
-                </TouchableOpacity>
+
+                <BlueButton onPress={()=>navigation.navigate('AfterLogin')} text='Login'/>
                 
                 <TouchableOpacity onPress={()=>navigation.navigate('NotAuthenticated')}>
                     <Text style={{color: "#02a4da", fontSize: 15}}>Continue as a Guest</Text>

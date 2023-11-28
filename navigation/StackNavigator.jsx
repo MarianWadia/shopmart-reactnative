@@ -79,17 +79,15 @@ const StackNavigator = () => {
     }
   return (
    <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName='Splash'>
         <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
         <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }}/>
         <Stack.Screen name='Register' component={RegisterScreen} options={{title: ''}}/>
         <Stack.Screen name='Main' component={BottomTabs} options={{ headerShown: false }} />
-        {/* <Stack.Screen name='Account' component={AccountScreen} options={{ headerShown: false }} /> */}
+        <Stack.Screen name='CartScreen' component={CartScreen} options={{ headerShown: false }} />
         <Stack.Screen name='Inbox' component={InboxScreen} options={{headerShown: false}} />
-        {/* <Stack.Screen name='Categories' component={CategoriesScreen} options={{headerShown: false}} /> */}
         <Stack.Screen name='AfterLogin' component={AfterLoginVerifyScreen} options={{title: ''}} />
         <Stack.Screen name='AfterRegister' component={AfterRegisterVerifyScreen} options={{title: ''}} />
-        {/* <Stack.Screen name='Home' component={HomeScreen} options={{headerShown: false}} /> */}
         <Stack.Screen name='NotAuthenticated' component={NotAuthenticatedScreen} options={{headerShown: false}} />
     </Stack.Navigator>
    </NavigationContainer>

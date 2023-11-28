@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 import StackNavigator from './navigation/StackNavigator';
+import { CartProvider } from './context/CartContext';
 
 export default function App() {
   return (
-    <>
+    <CartProvider>
       <StackNavigator />
-    </>
+    </CartProvider>
   );
 }
 

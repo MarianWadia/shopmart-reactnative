@@ -2,6 +2,7 @@ import { KeyboardAvoidingView, SafeAreaView, loginStylesheet, Text, TextInput, T
 import React, { useState } from 'react'
 import { loginStyles } from './LoginScreen'
 import { useNavigation } from '@react-navigation/native';
+import BlueButton from '../components/BlueButton';
 
 const RegisterScreen = () => {
     const [email, setEmail] = useState('');
@@ -28,9 +29,8 @@ const RegisterScreen = () => {
                 </View>
             </View>
             <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center', gap: 15}}>
-                <TouchableOpacity style={loginStyles.buttonContainer} onPress={()=>navigation.navigate('AfterRegister')}>
-                    <Text style={{color: "white", fontSize: 15}}>Continue</Text>
-                </TouchableOpacity>
+
+                <BlueButton text='Continue' onPress={()=>navigation.navigate('AfterRegister')} />
 
                 <View style={{flexDirection: 'row'}}>
                     <Text>Already Have an account? </Text>

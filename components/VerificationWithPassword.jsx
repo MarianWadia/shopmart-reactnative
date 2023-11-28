@@ -4,6 +4,7 @@ import { loginStyles } from '../screens/LoginScreen'
 import { AfterLoginStyles } from '../screens/AfterLoginVerifyScreen'
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
+import BlueButton from './BlueButton';
 
 const VerificationWithPassword = () => {
   const [password, setPassword] = useState('');
@@ -25,9 +26,7 @@ const VerificationWithPassword = () => {
             </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={[loginStyles.buttonContainer, AfterLoginStyles.buttonStyles]} onPress={()=>navigation.navigate('Main')}>
-          <Text style={{color: "white", fontSize: 15}}>Continue</Text>
-        </TouchableOpacity>
+        <BlueButton text='Login' specialStyles={AfterLoginStyles.buttonStyles} onPress={()=>navigation.navigate('Main')} />
     </KeyboardAvoidingView>
   )
 }
