@@ -88,21 +88,21 @@ const HomeScreen = () => {
         <AntDesign name="down" size={18} color="black" />
       </TouchableOpacity>
 
-      
+      <View>
       {/* Categories Circles list */}
-      <FlatList
-      data={categories}
-      renderItem={renderCategoryItem}
-      keyExtractor={(item) => item.label}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      contentContainerStyle={styles.categoryList}
-    />
-
+          <FlatList
+          data={categories}
+          renderItem={renderCategoryItem}
+          keyExtractor={(item) => item.label}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.categoryList}
+        />
+      </View>
       {/* Banner */}
         <Image 
           source={{uri: 'https://th.bing.com/th/id/OIP.CPOThO3-HietYkmTBwkNhwHaDt?rs=1&pid=ImgDetMain'}}
-          style={{width: '100%', height: 200, marginTop: -280}}
+          style={{width: '100%', height: 200}}
         />
 
       {/* Shopping Items */}

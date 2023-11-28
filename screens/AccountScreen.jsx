@@ -72,7 +72,7 @@ const AccountScreen = () => {
                             <FontAwesome name="angle-right" size={24} color="black" />
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.rowItem} onPress={() => navigation.navigate('NotAuthenticated')}>
+                        <TouchableOpacity style={styles.rowItem}>
                             <Text style={{fontSize: 15}}>Account Management</Text>
                             <FontAwesome name="angle-right" size={24} color="black" />
                         </TouchableOpacity>
